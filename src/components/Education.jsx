@@ -4,6 +4,7 @@ import Experience from "./Experience.jsx";
 import { useState } from "react";
 
 const addEducation = "Add Education";
+let nextId = 0;
 
 export default function Education({ education, setEducation }) {
   const [schoolName, setSchoolName] = useState("");
@@ -14,6 +15,7 @@ export default function Education({ education, setEducation }) {
 
   function onAddEducation() {
     const newEducationObject = {
+      id: nextId++,
       school: schoolName,
       degree,
       startDate,

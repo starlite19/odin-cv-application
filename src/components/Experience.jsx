@@ -7,6 +7,7 @@ export default function Experience({
   end,
   present,
   description = "",
+  setEditing,
 }) {
   return (
     <div class="experience">
@@ -20,7 +21,11 @@ export default function Experience({
         <div class="description">{description}</div>
       </div>
       <div class="right">
-        <img class="edit" src="../edit-button.svg"></img>
+        <img
+          class="edit"
+          src="../edit-button.svg"
+          onClick={() => setEditing(true)}
+        ></img>
       </div>
     </div>
   );
