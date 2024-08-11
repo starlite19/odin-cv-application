@@ -3,6 +3,8 @@ import EducationForm from "./EducationForm.jsx";
 import Experience from "./Experience.jsx";
 import { useState } from "react";
 
+const addEducation = "Add Education";
+
 export default function Education({ education, setEducation }) {
   const [schoolName, setSchoolName] = useState("");
   const [degree, setDegree] = useState("");
@@ -15,7 +17,8 @@ export default function Education({ education, setEducation }) {
       school: schoolName,
       degree,
       startDate,
-      endDate: stillAttending ? "Present" : endDate,
+      endDate,
+      present: stillAttending,
     };
     setEducation([...education, newEducationObject]);
     setSchoolName("");
@@ -33,6 +36,7 @@ export default function Education({ education, setEducation }) {
           company={e.school}
           start={e.startDate}
           end={e.endDate}
+          present={e.present}
         />
       ))}
       <EducationForm
@@ -43,7 +47,7 @@ export default function Education({ education, setEducation }) {
         present={{ stillAttending, setStillAttending }}
       />
       <button type="button" onClick={onAddEducation}>
-        Add Education
+        {addEducation}
       </button>
     </section>
   );

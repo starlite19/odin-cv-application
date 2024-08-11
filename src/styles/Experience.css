@@ -1,0 +1,23 @@
+.experience {
+    border: 1px solid black;
+    border-radius: 8px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.description {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.edit {
+    height: 25px;
+    width: 25px;
+}
+
+.edit:hover {
+    height: 27px;
+    width: 27px;
+    cursor: pointer;
+}

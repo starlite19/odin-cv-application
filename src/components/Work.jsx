@@ -3,6 +3,9 @@ import WorkForm from "./WorkForm.jsx";
 import Experience from "./Experience.jsx";
 import { useState } from "react";
 
+const addWork = "Add Work Experience";
+const present = "Present";
+
 export default function Work({ workExperience, setWorkExperience }) {
   const [jobTitle, setJobTitle] = useState("");
   const [employer, setEmployer] = useState("");
@@ -16,7 +19,8 @@ export default function Work({ workExperience, setWorkExperience }) {
       title: jobTitle,
       company: employer,
       startDate,
-      endDate: stillWorking ? "Present" : endDate,
+      endDate: endDate,
+      present: stillWorking,
       jobDescription,
     };
     setWorkExperience([...workExperience, newWorkObject]);
@@ -36,6 +40,7 @@ export default function Work({ workExperience, setWorkExperience }) {
           company={w.company}
           start={w.startDate}
           end={w.endDate}
+          present={w.present}
           description={w.jobDescription}
         />
       ))}
@@ -48,7 +53,7 @@ export default function Work({ workExperience, setWorkExperience }) {
         present={{ stillWorking, setStillWorking }}
       />
       <button type="button" onClick={onAddWork}>
-        Add Work Experience
+        {addWork}
       </button>
     </section>
   );
