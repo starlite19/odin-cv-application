@@ -6,8 +6,8 @@ export default function Experience({
   start,
   end,
   present,
-  description = "",
   setEditing,
+  description = "",
 }) {
   return (
     <div class="experience">

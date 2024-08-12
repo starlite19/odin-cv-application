@@ -1,10 +1,10 @@
 import "../styles/Work.css";
 import WorkForm from "./WorkForm.jsx";
-import Experience from "./Experience.jsx";
+import WorkItem from "./WorkItem.jsx";
 import { useState } from "react";
 
 const addWork = "Add Work Experience";
-const present = "Present";
+let nextId = 0;
 
 export default function Work({ workExperience, setWorkExperience }) {
   const [jobTitle, setJobTitle] = useState("");
@@ -16,6 +16,7 @@ export default function Work({ workExperience, setWorkExperience }) {
 
   function onAddWork() {
     const newWorkObject = {
+      id: nextId++,
       title: jobTitle,
       company: employer,
       startDate,
@@ -35,13 +36,10 @@ export default function Work({ workExperience, setWorkExperience }) {
     <section id="work">
       <h2>Work Experience</h2>
       {workExperience.map((w) => (
-        <Experience
-          role={w.title}
-          company={w.company}
-          start={w.startDate}
-          end={w.endDate}
-          present={w.present}
-          description={w.jobDescription}
+        <WorkItem
+          workItem={w}
+          workExperience={workExperience}
+          setWorkExperience={setWorkExperience}
         />
       ))}
       <WorkForm

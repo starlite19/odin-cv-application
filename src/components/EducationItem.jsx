@@ -1,6 +1,7 @@
 import { useState } from "react";
 import EducationForm from "./EducationForm.jsx";
 import Experience from "./Experience.jsx";
+import "../styles/Item.css";
 
 export default function EducationItem({
   educationItem,
@@ -14,13 +15,9 @@ export default function EducationItem({
   const [endDate, setEndDate] = useState(educationItem.endDate);
   const [stillAttending, setStillAttending] = useState(educationItem.present);
 
-  // function onEditing() {
-  //   setEditing(true);
-  // }
-
-  function onSave(itemId) {
+  function onSave(e) {
+    const itemId = e.target.id.replace("education", "");
     const educationCopy = [...education];
-    // const newItem = educationCopy.find((e) => e.id == itemId);
     educationCopy[itemId] = {
       id: itemId,
       school: schoolName,
@@ -42,7 +39,6 @@ export default function EducationItem({
     setStillAttending(educationItem.present);
   }
 
-  // TODO add ids to EducationForm and Experience so Save can function properly?
   if (editing) {
     return (
       <>
@@ -53,8 +49,18 @@ export default function EducationItem({
           end={{ endDate, setEndDate }}
           present={{ stillAttending, setStillAttending }}
         />
-        <button onClick={onSave}>Save</button>
-        <button onClick={onCancel}>Cancel</button>
+        <div class="editButtons">
+          <button class="cancel" onClick={onCancel}>
+            Cancel
+          </button>
+          <button
+            id={"education" + educationItem.id}
+            class="save"
+            onClick={onSave}
+          >
+            Save
+          </button>
+        </div>
       </>
     );
   } else {

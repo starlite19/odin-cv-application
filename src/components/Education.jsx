@@ -1,6 +1,6 @@
 import "../styles/Education.css";
 import EducationForm from "./EducationForm.jsx";
-import Experience from "./Experience.jsx";
+import EducationItem from "./EducationItem.jsx";
 import { useState } from "react";
 
 const addEducation = "Add Education";
@@ -33,12 +33,10 @@ export default function Education({ education, setEducation }) {
     <section>
       <h2>Educational Experience</h2>
       {education.map((e) => (
-        <Experience
-          role={e.degree}
-          company={e.school}
-          start={e.startDate}
-          end={e.endDate}
-          present={e.present}
+        <EducationItem
+          educationItem={e}
+          education={education}
+          setEducation={setEducation}
         />
       ))}
       <EducationForm
