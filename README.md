@@ -1,4 +1,5 @@
 # ODIN BASIC CV APPLICATION
+Project deployed on https://odin-cv-application-alpha.vercel.app/
 
 This project demonstrates the concepts of building basic REACT apps using the following knowledge:
 - REACT components
